@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WHZ-roomfiner-graph-model.iml" filepath="$PROJECT_DIR$/WHZ-roomfiner-graph-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WHZ-roomfinder-graph-model.iml" filepath="$PROJECT_DIR$/WHZ-roomfinder-graph-model.iml" />
     </modules>
   </component>
 </project>

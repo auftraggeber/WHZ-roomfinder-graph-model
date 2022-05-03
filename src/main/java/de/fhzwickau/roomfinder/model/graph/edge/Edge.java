@@ -31,7 +31,7 @@ public class Edge implements Serializable {
      */
     public Edge(Node n1, Node n2, int weight) throws IllegalStateException {
 
-        if (n1.getGraph() == null || n2.getGraph() == null || !n1.getGraph().equals(n2.getGraph()))
+        if (n1.getGraph() == null || n2.getGraph() == null || !n1.getGraph().contains(n2) || !n2.getGraph().contains(n1))
             throw new IllegalStateException("The nodes are not part of the same graph.");
 
         nodes = new Node[]{

@@ -24,6 +24,10 @@ public class Graph extends HashMap<String, Node> implements Serializable {
 
     private final Collection<LazyNodeListener> listeners = new HashSet<>();
 
+    public boolean registerListener(LazyNodeListener l) {
+        return listeners.add(l);
+    }
+
     private String getKey(Node node) {
         return node.getId();
     }
@@ -43,18 +47,22 @@ public class Graph extends HashMap<String, Node> implements Serializable {
             if ((old instanceof LazyNode) && !(node instanceof LazyNode)) {
                 listeners.forEach(l -> l.onCompleteNodeLoaded((LazyNode) old, node));
             }
+
+            remove(old);
         }
 
         put(node.getId(), node);
         node.setGraph(this);
 
         if (node instanceof LazyNodeListener) {
-            listeners.add((LazyNodeListener) node);
+            registerListener((LazyNodeListener) node);
         }
+
+
     }
 
     /**
-     * Fügt mehrere Knoten hinzu. Arbeitet damit mit {@link #add(Node)}.
+     * Fügt mehrere Knoten hinzu. Arbeitet damit mit {@link #add(de.fhzwickau.roomfinder.model.graph.node.Node)}.
      * @param nodes Die Knoten die hinzugefügt werden sollen.
      */
     public void addAll(Collection<Node> nodes) {
@@ -75,6 +83,16 @@ public class Graph extends HashMap<String, Node> implements Serializable {
         copy.addAll(withGraph);
 
         return copy;
+    }
+
+    public void remove(Node node) {
+        remove(getKey(node));
+    }
+
+    public boolean contains(Node node) {
+        String key = getKey(node);
+
+        return containsKey(key) && get(key).equals(node);
     }
 
 }

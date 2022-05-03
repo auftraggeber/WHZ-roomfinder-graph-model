@@ -1,5 +1,6 @@
 package de.fhzwickau.roomfinder.model.graph.node;
 
+import de.fhzwickau.roomfinder.model.graph.Graph;
 import de.fhzwickau.roomfinder.model.graph.node.listener.LazyNodeListener;
 
 import java.io.Serializable;
@@ -27,8 +28,6 @@ public class LazyNode extends Node implements Serializable, LazyNodeListener {
 
     @Override
     public void onCompleteNodeLoaded(LazyNode lazyNode, Node completeNode) {
-        if (this.equals(lazyNode)) {
-            // TODO: ersetzen
-        }
+        // TODO: edges ersetzen
     }
 }
