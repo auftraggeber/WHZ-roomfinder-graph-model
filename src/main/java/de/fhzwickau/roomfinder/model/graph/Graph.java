@@ -62,7 +62,7 @@ public class Graph extends HashMap<String, Node> implements Serializable {
     }
 
     /**
-     * Fügt mehrere Knoten hinzu. Arbeitet damit mit {@link #add(de.fhzwickau.roomfinder.model.graph.node.Node)}.
+     * Fügt mehrere Knoten hinzu. Arbeitet damit mit {@link #add(de.fhzwickau.graphbuilder.model.graph.node.Node)}.
      * @param nodes Die Knoten die hinzugefügt werden sollen.
      */
     public void addAll(Collection<Node> nodes) {
@@ -86,13 +86,19 @@ public class Graph extends HashMap<String, Node> implements Serializable {
     }
 
     public void remove(Node node) {
-        remove(getKey(node));
+        if (contains(node)) {
+            for (String k : keySet()) {
+                if (get(k).equals(node))
+                    remove(k);
+
+                if (!contains(node))
+                    return;
+            }
+        }
     }
 
     public boolean contains(Node node) {
-        String key = getKey(node);
-
-        return containsKey(key) && get(key).equals(node);
+        return containsValue(node);
     }
 
 }

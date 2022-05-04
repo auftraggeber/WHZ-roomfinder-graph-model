@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="WHZ-roomfinder-graph-model" target="18" />
+      <module name="WHZ-roomfinder-graph-model" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
