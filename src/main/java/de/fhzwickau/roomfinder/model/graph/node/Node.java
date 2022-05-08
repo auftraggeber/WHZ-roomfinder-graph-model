@@ -5,10 +5,7 @@ import de.fhzwickau.roomfinder.model.graph.edge.Edge;
 import de.fhzwickau.roomfinder.model.metadata.Metadata;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Die Knoten unseres Graphen.
@@ -104,6 +101,21 @@ public class Node implements Serializable {
 
     public boolean hasPosition() {
         return positionX >= 0 && positionY >= 0;
+    }
+
+    public Set<Edge> getEdges() {
+        return Collections.unmodifiableSet(edges);
+    }
+
+    public boolean addEdge(Edge edge) {
+        for (Edge e : edges) {
+            if (e.getOther(this).equals(edge.getOther(this))) {
+                edges.remove(e);
+                e.getOther(this).edges.remove(e);
+            }
+        }
+
+        return edges.add(edge);
     }
 
     @Override

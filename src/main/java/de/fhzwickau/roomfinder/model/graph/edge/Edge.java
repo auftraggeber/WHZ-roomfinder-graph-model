@@ -27,12 +27,16 @@ public class Edge implements Serializable {
      * @param n2 Knoten 2 der Kante.
      * @param weight Das Gewicht der Kante, welches für die Berechnung des optimalen Weges benötigt wird.
      * @throws IllegalStateException Die beiden Knoten müssen schon Teil des gleichen Graphen sein.
+     * @throws IllegalArgumentException Falls die Knoten gleich sind (Ein Knoten darf keine Kante zu sich selbst aufbauen).
      * Falls sie das nicht sind, wird eine Exception geworfen.
      */
     public Edge(Node n1, Node n2, int weight) throws IllegalStateException {
 
         if (n1.getGraph() == null || n2.getGraph() == null || !n1.getGraph().contains(n2) || !n2.getGraph().contains(n1))
             throw new IllegalStateException("The nodes are not part of the same graph.");
+
+        if (n1.equals(n2))
+            throw new IllegalArgumentException("The nodes are equal.");
 
         nodes = new Node[]{
                 n1,
