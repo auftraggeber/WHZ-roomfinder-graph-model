@@ -28,6 +28,6 @@ public class LazyNode extends Node implements Serializable, LazyNodeListener {
 
     @Override
     public void onCompleteNodeLoaded(LazyNode lazyNode, Node completeNode) {
-        // TODO: edges ersetzen
+        getEdges().forEach(e -> e.replaceLazyNodeWith(completeNode));
     }
 }
