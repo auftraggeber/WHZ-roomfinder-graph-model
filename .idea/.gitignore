@@ -6,3 +6,7 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+/libraries/Maven__org_objenesis_objenesis_3_2.xml
+/libraries/Maven__org_mockito_mockito_core_4_5_1.xml
+/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_9.xml
+/libraries/Maven__net_bytebuddy_byte_buddy_1_12_9.xml
